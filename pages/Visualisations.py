@@ -1,4 +1,4 @@
-# visualisation.py hi
+# visualisation.py
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -43,6 +43,16 @@ if uploaded_data is not None:
             if dimension == '2D':
                 if plot_type == 'Heatmap':
                     fig = px.imshow(uploaded_data, x=uploaded_data.columns, y=uploaded_data.index, color_continuous_scale='viridis')
+                elif plot_type == 'Bar Chart':
+                    fig = px.bar(uploaded_data, x=x_axis, y=y_axis, color=color_by, barmode='group')
+                elif plot_type == 'Box Plot':
+                    fig = px.box(uploaded_data, x=x_axis, y=y_axis, color=color_by)
+                elif plot_type == 'Violin Plot':
+                    fig = px.violin(uploaded_data, x=x_axis, y=y_axis, color=color_by)
+                elif plot_type == 'Bubble Chart':
+                    fig = px.scatter(uploaded_data, x=x_axis, y=y_axis, size=size_by, color=color_by)
+                elif plot_type == 'Line Chart':
+                    fig = px.line(uploaded_data, x=x_axis, y=y_axis, color=color_by)
                 else:
                     fig = px.scatter(uploaded_data, x=x_axis, y=y_axis, hover_name=uploaded_data.index,
                                      trendline='ols' if show_regression_line else None, color=color_by, size=size_by)
@@ -59,6 +69,8 @@ if uploaded_data is not None:
                     fig.add_trace(go.Scatter3d(x=uploaded_data[x_axis], y=uploaded_data[y_axis], z=uploaded_data[z_axis],
                                                mode='markers', marker=dict(size=uploaded_data[size_by], color=uploaded_data[color_by]),
                                                text=uploaded_data.index, name='Data Points'))
+                elif plot_type == 'Surface Plot':
+                    fig.add_trace(go.Surface(z=uploaded_data[z_axis], x=uploaded_data[x_axis], y=uploaded_data[y_axis], colorscale='viridis'))
 
                 if show_regression_line:
                     regression_line = px.get_trendline_results(px.scatter(uploaded_data, x=x_axis, y=y_axis, trendline='ols'))
