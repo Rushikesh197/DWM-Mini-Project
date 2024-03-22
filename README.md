@@ -40,14 +40,6 @@ PyMineData is an advanced data warehousing and mining tool developed using Pytho
 
 4. **Usage:** Explore the functionalities provided by PyMineData through the user-friendly interface.
 
-## Contributing
-
-Contributions are welcome! If you have any suggestions or would like to contribute to the project, feel free to fork the repository and submit a pull request.
-
-## License
-
-This project is licensed under the [License Name] License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any inquiries or support, please contact rushikeshgadewar@gmail.com.
